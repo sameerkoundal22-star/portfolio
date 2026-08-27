@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sameer Koundal | Portfolio</title>
-  
-  <!-- Fonts & Icons -->
+  <title>Sameer Koundal | Software Engineer & Embedded Systems</title>
+
+  <!-- Google Fonts & Font Awesome Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
@@ -14,15 +14,15 @@
 
   <style>
     :root {
-      --bg: #07090e;
-      --card-bg: rgba(18, 24, 38, 0.65);
+      --bg: #05070f;
+      --card-bg: rgba(13, 18, 36, 0.6);
       --card-border: rgba(255, 255, 255, 0.08);
       --accent-cyan: #00f2fe;
-      --accent-violet: #7928ca;
+      --accent-blue: #4facfe;
+      --accent-purple: #7928ca;
       --accent-emerald: #10b981;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
-      --glow: 0 0 35px rgba(0, 242, 254, 0.18);
     }
 
     * {
@@ -38,59 +38,75 @@
       font-family: 'Plus Jakarta Sans', sans-serif;
       line-height: 1.6;
       overflow-x: hidden;
-      position: relative;
     }
 
-    /* Ambient Background Glows */
-    .ambient-glow {
+    /* Custom Interactive Canvas */
+    #particles-canvas {
       position: fixed;
-      border-radius: 50%;
-      filter: blur(120px);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       z-index: -1;
-      opacity: 0.35;
       pointer-events: none;
     }
-    .glow-1 {
-      top: -10%;
-      left: -10%;
-      width: 500px;
-      height: 500px;
-      background: var(--accent-cyan);
+
+    /* Glowing Blobs */
+    .glow-blob {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(140px);
+      z-index: -1;
+      opacity: 0.3;
+      pointer-events: none;
+      animation: floatGlow 12s infinite alternate ease-in-out;
     }
-    .glow-2 {
-      bottom: 20%;
-      right: -10%;
+    .blob-1 {
+      top: -10%;
+      left: -5%;
       width: 550px;
       height: 550px;
-      background: var(--accent-violet);
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+    }
+    .blob-2 {
+      bottom: 10%;
+      right: -5%;
+      width: 600px;
+      height: 600px;
+      background: linear-gradient(135deg, var(--accent-purple), #d946ef);
+      animation-delay: -6s;
     }
 
-    /* Navigation */
+    @keyframes floatGlow {
+      0% { transform: scale(1) translate(0, 0); }
+      100% { transform: scale(1.15) translate(40px, 30px); }
+    }
+
+    /* Header & Nav */
     nav {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      padding: 1.2rem 8%;
+      padding: 1.1rem 8%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      backdrop-filter: blur(16px);
-      background: rgba(7, 9, 14, 0.75);
+      backdrop-filter: blur(18px);
+      background: rgba(5, 7, 15, 0.75);
       border-bottom: 1px solid var(--card-border);
       z-index: 1000;
-      transition: all 0.3s ease;
     }
 
     .nav-logo {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       font-weight: 700;
-      letter-spacing: -0.5px;
       background: linear-gradient(135deg, #fff, var(--accent-cyan));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       text-decoration: none;
+      letter-spacing: -0.5px;
     }
 
     .nav-links {
@@ -120,11 +136,11 @@
       padding: 8rem 8% 4rem;
     }
 
-    .badge {
+    .status-badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.4rem 1rem;
+      gap: 0.6rem;
+      padding: 0.4rem 1.1rem;
       background: rgba(0, 242, 254, 0.08);
       border: 1px solid rgba(0, 242, 254, 0.25);
       border-radius: 50px;
@@ -135,25 +151,32 @@
       margin-bottom: 1.5rem;
     }
 
-    .badge span {
+    .status-dot {
       width: 8px;
       height: 8px;
       background: var(--accent-cyan);
       border-radius: 50%;
       box-shadow: 0 0 10px var(--accent-cyan);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 242, 254, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(0, 242, 254, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 242, 254, 0); }
     }
 
     .hero-title {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2.5rem, 6vw, 4.8rem);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
       font-weight: 700;
-      line-height: 1.1;
+      line-height: 1.15;
       margin-bottom: 1.2rem;
       letter-spacing: -1.5px;
     }
 
-    .hero-gradient {
-      background: linear-gradient(135deg, #ffffff 30%, var(--accent-cyan) 80%, var(--accent-violet));
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff 20%, var(--accent-cyan) 60%, #c084fc);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -162,12 +185,12 @@
       font-size: 1.15rem;
       color: var(--text-muted);
       max-width: 650px;
-      margin-bottom: 2.2rem;
+      margin-bottom: 2rem;
     }
 
-    .hero-actions {
+    .btn-group {
       display: flex;
-      gap: 1rem;
+      gap: 1.2rem;
       flex-wrap: wrap;
     }
 
@@ -177,43 +200,43 @@
       font-weight: 600;
       font-size: 0.95rem;
       text-decoration: none;
-      transition: all 0.3s ease;
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
-      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--accent-cyan), #0072ff);
-      color: #000;
-      box-shadow: var(--glow);
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+      color: #05070f;
+      box-shadow: 0 0 25px rgba(0, 242, 254, 0.3);
     }
 
     .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 45px rgba(0, 242, 254, 0.35);
+      transform: translateY(-3px);
+      box-shadow: 0 0 40px rgba(0, 242, 254, 0.5);
     }
 
-    .btn-secondary {
+    .btn-glass {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       color: var(--text-main);
+      backdrop-filter: blur(10px);
     }
 
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.05);
-      border-color: rgba(255, 255, 255, 0.2);
-      transform: translateY(-2px);
+    .btn-glass:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.25);
+      transform: translateY(-3px);
     }
 
-    /* Shared Sections */
+    /* Sections */
     section {
       padding: 6rem 8%;
     }
 
     .section-header {
-      margin-bottom: 3.5rem;
+      margin-bottom: 3rem;
     }
 
     .section-tag {
@@ -223,7 +246,7 @@
       font-weight: 700;
       letter-spacing: 2px;
       display: block;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
 
     .section-title {
@@ -233,21 +256,20 @@
       letter-spacing: -0.5px;
     }
 
-    /* Glass Cards */
+    /* 3D Tilt Glass Cards */
     .glass-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 20px;
       padding: 2rem;
-      backdrop-filter: blur(12px);
-      transition: all 0.3s ease;
+      backdrop-filter: blur(16px);
+      transition: transform 0.2s ease, border-color 0.3s ease, box-shadow 0.3s ease;
       position: relative;
-      overflow: hidden;
     }
 
     .glass-card:hover {
-      border-color: rgba(0, 242, 254, 0.3);
-      transform: translateY(-4px);
+      border-color: rgba(0, 242, 254, 0.35);
+      box-shadow: 0 10px 30px rgba(0, 242, 254, 0.1);
     }
 
     /* Skills Grid */
@@ -257,37 +279,39 @@
       gap: 1.5rem;
     }
 
-    .skill-card-icon {
-      font-size: 1.8rem;
-      color: var(--accent-cyan);
+    .skill-icon {
+      font-size: 2.2rem;
       margin-bottom: 1.2rem;
     }
 
-    .skill-title {
-      font-size: 1.15rem;
-      margin-bottom: 1rem;
-      font-weight: 600;
-    }
-
-    .skill-tags {
+    .skill-badges {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: 0.6rem;
+      margin-top: 1rem;
     }
 
-    .tag {
+    .skill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
       background: rgba(255, 255, 255, 0.05);
-      padding: 0.35rem 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0.4rem 0.8rem;
       border-radius: 8px;
       font-size: 0.85rem;
       color: var(--text-muted);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .skill-badge i {
+      font-size: 1rem;
+      color: var(--accent-cyan);
     }
 
     /* Projects Grid */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
       gap: 2rem;
     }
 
@@ -301,22 +325,22 @@
     .project-title {
       font-size: 1.3rem;
       font-weight: 700;
-      color: var(--text-main);
     }
 
-    .project-timeline {
+    .project-tag {
       font-size: 0.75rem;
-      color: var(--accent-cyan);
       background: rgba(0, 242, 254, 0.1);
+      color: var(--accent-cyan);
       padding: 0.2rem 0.6rem;
-      border-radius: 20px;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 242, 254, 0.2);
     }
 
     .project-desc {
+      list-style: none;
       color: var(--text-muted);
       font-size: 0.92rem;
       margin-bottom: 1.5rem;
-      list-style-type: none;
     }
 
     .project-desc li {
@@ -332,7 +356,7 @@
       color: var(--accent-cyan);
     }
 
-    /* Education & Certs Split */
+    /* Split Timeline Sections */
     .split-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -340,21 +364,26 @@
     }
 
     .timeline-item {
-      padding-left: 1.5rem;
-      border-left: 2px solid rgba(0, 242, 254, 0.3);
       position: relative;
+      padding-left: 1.5rem;
+      border-left: 2px solid rgba(0, 242, 254, 0.25);
       margin-bottom: 2rem;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
     }
 
     .timeline-item::before {
       content: '';
       position: absolute;
       left: -6px;
-      top: 0;
+      top: 3px;
       width: 10px;
       height: 10px;
       border-radius: 50%;
       background: var(--accent-cyan);
+      box-shadow: 0 0 8px var(--accent-cyan);
     }
 
     .timeline-title {
@@ -365,13 +394,13 @@
     .timeline-sub {
       color: var(--text-muted);
       font-size: 0.9rem;
-      margin-bottom: 0.3rem;
     }
 
     .timeline-meta {
       font-size: 0.8rem;
       color: var(--accent-emerald);
       font-weight: 600;
+      margin-top: 0.2rem;
     }
 
     /* Achievements */
@@ -388,18 +417,19 @@
     }
 
     .achievement-icon {
-      font-size: 1.5rem;
-      color: #eab308;
-      background: rgba(234, 179, 8, 0.1);
-      padding: 0.8rem;
-      border-radius: 12px;
+      font-size: 1.6rem;
+      color: #fbbf24;
+      background: rgba(251, 191, 36, 0.1);
+      padding: 0.9rem;
+      border-radius: 14px;
+      border: 1px solid rgba(251, 191, 36, 0.2);
     }
 
     /* Footer */
     footer {
       border-top: 1px solid var(--card-border);
       padding: 4rem 8% 2rem;
-      background: rgba(5, 7, 10, 0.95);
+      background: rgba(4, 6, 12, 0.95);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -409,12 +439,12 @@
 
     .social-links {
       display: flex;
-      gap: 1.2rem;
+      gap: 1rem;
     }
 
-    .social-link {
-      width: 44px;
-      height: 44px;
+    .social-btn {
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       background: var(--card-bg);
       border: 1px solid var(--card-border);
@@ -422,27 +452,32 @@
       align-items: center;
       justify-content: center;
       color: var(--text-main);
+      font-size: 1.2rem;
       text-decoration: none;
-      transition: all 0.3s ease;
+      transition: all 0.3s;
     }
 
-    .social-link:hover {
-      color: var(--accent-cyan);
-      border-color: var(--accent-cyan);
-      transform: translateY(-3px);
+    .social-btn:hover {
+      color: #05070f;
+      background: var(--accent-cyan);
+      transform: translateY(-4px);
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
     }
 
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      .hero { padding-top: 6rem; }
+      .hero { padding-top: 7rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Ambient Glows -->
-  <div class="ambient-glow glow-1"></div>
-  <div class="ambient-glow glow-2"></div>
+  <!-- Background Particle Network Canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Ambient Animated Lighting -->
+  <div class="glow-blob blob-1"></div>
+  <div class="glow-blob blob-2"></div>
 
   <!-- Navigation -->
   <nav>
@@ -459,119 +494,118 @@
 
   <!-- Hero Section -->
   <header class="hero" id="about">
-    <div class="badge" data-aos="fade-up">
-      <span></span> Available for Opportunities
+    <div class="status-badge" data-aos="fade-up">
+      <div class="status-dot"></div> Available for Projects & Internships
     </div>
     <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">
-      Hi, I'm <span class="hero-gradient">Sameer Koundal</span>.
+      Hi, I'm <span class="gradient-text">Sameer Koundal</span>.
     </h1>
     <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
-      Computer Science & Engineering undergraduate passionate about embedded systems, simulation, and software engineering workflows. Building intelligent hardware-software bridges.
+      Computer Science and Engineering undergraduate crafting software systems, embedded hardware solutions, and circuit workflows.
     </p>
-    <div class="hero-actions" data-aos="fade-up" data-aos-delay="300">
+    <div class="btn-group" data-aos="fade-up" data-aos-delay="300">
       <a href="mailto:sameerkoundal@gmail.com" class="btn btn-primary">
-        <i class="fa-regular fa-envelope"></i> Get in Touch
+        <i class="fa-solid fa-envelope"></i> Get In Touch
       </a>
-      <a href="https://github.com/sameerkoundal22-star" target="_blank" class="btn btn-secondary">
-        <i class="fa-brands fa-github"></i> GitHub
+      <a href="https://github.com/sameerkoundal22-star" target="_blank" class="btn btn-glass">
+        <i class="fa-brands fa-github"></i> GitHub Profile
       </a>
-      <a href="https://www.linkedin.com/in/sameer-koundal-a0b7b6392/" target="_blank" class="btn btn-secondary">
+      <a href="https://www.linkedin.com/in/sameer-koundal-a0b7b6392/" target="_blank" class="btn btn-glass">
         <i class="fa-brands fa-linkedin"></i> LinkedIn
       </a>
     </div>
   </header>
 
-  <!-- Skills Section -->
+  <!-- Skills Section with Brand Logos -->
   <section id="skills">
     <div class="section-header" data-aos="fade-up">
-      <span class="section-tag">Expertise</span>
-      <h2 class="section-title">Technical Arsenal</h2>
+      <span class="section-tag">Capabilities</span>
+      <h2 class="section-title">Technical Skills & Tools</h2>
     </div>
     <div class="skills-grid">
-      <div class="glass-card" data-aos="fade-up" data-aos-delay="100">
-        <i class="fa-solid fa-code skill-card-icon"></i>
-        <h3 class="skill-title">Languages</h3>
-        <div class="skill-tags">
-          <span class="tag">C</span>
-          <span class="tag">C++</span>
-          <span class="tag">Python</span>
+      <div class="glass-card tilt-card" data-aos="fade-up" data-aos-delay="100">
+        <i class="fa-solid fa-code-branch skill-icon" style="color: var(--accent-cyan);"></i>
+        <h3>Programming Languages</h3>
+        <div class="skill-badges">
+          <span class="skill-badge"><i class="fa-brands fa-python" style="color:#38bdf8;"></i> Python</span>
+          <span class="skill-badge"><i class="fa-solid fa-c"></i> C</span>
+          <span class="skill-badge"><i class="fa-solid fa-terminal"></i> C++</span>
         </div>
       </div>
-      <div class="glass-card" data-aos="fade-up" data-aos-delay="200">
-        <i class="fa-solid fa-layer-group skill-card-icon"></i>
-        <h3 class="skill-title">Technologies</h3>
-        <div class="skill-tags">
-          <span class="tag">HTML5</span>
-          <span class="tag">CSS3</span>
+
+      <div class="glass-card tilt-card" data-aos="fade-up" data-aos-delay="200">
+        <i class="fa-solid fa-globe skill-icon" style="color: #60a5fa;"></i>
+        <h3>Frontend Web</h3>
+        <div class="skill-badges">
+          <span class="skill-badge"><i class="fa-brands fa-html5" style="color:#f97316;"></i> HTML5</span>
+          <span class="skill-badge"><i class="fa-brands fa-css3-alt" style="color:#38bdf8;"></i> CSS3</span>
         </div>
       </div>
-      <div class="glass-card" data-aos="fade-up" data-aos-delay="300">
-        <i class="fa-solid fa-microchip skill-card-icon"></i>
-        <h3 class="skill-title">Embedded & Tools</h3>
-        <div class="skill-tags">
-          <span class="tag">Arduino</span>
-          <span class="tag">Proteus</span>
-          <span class="tag">Git</span>
-          <span class="tag">GitHub</span>
-          <span class="tag">VS Code</span>
+
+      <div class="glass-card tilt-card" data-aos="fade-up" data-aos-delay="300">
+        <i class="fa-solid fa-microchip skill-icon" style="color: #a855f7;"></i>
+        <h3>Hardware & Simulation</h3>
+        <div class="skill-badges">
+          <span class="skill-badge"><i class="fa-solid fa-bolt" style="color:#06b6d4;"></i> Arduino</span>
+          <span class="skill-badge"><i class="fa-solid fa-microchip" style="color:#ec4899;"></i> Proteus</span>
         </div>
       </div>
-      <div class="glass-card" data-aos="fade-up" data-aos-delay="400">
-        <i class="fa-solid fa-user-check skill-card-icon"></i>
-        <h3 class="skill-title">Soft Skills</h3>
-        <div class="skill-tags">
-          <span class="tag">Problem Solving</span>
-          <span class="tag">Team Collaboration</span>
-          <span class="tag">Time Management</span>
-          <span class="tag">Adaptability</span>
+
+      <div class="glass-card tilt-card" data-aos="fade-up" data-aos-delay="400">
+        <i class="fa-solid fa-screwdriver-wrench skill-icon" style="color: #10b981;"></i>
+        <h3>Developer Tools</h3>
+        <div class="skill-badges">
+          <span class="skill-badge"><i class="fa-brands fa-git-alt" style="color:#f43f5e;"></i> Git</span>
+          <span class="skill-badge"><i class="fa-brands fa-github"></i> GitHub</span>
+          <span class="skill-badge"><i class="fa-solid fa-code" style="color:#3b82f6;"></i> VS Code</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Projects Section -->
+  <!-- Projects Section with Interactive Cards -->
   <section id="projects">
     <div class="section-header" data-aos="fade-up">
-      <span class="section-tag">Showcase</span>
+      <span class="section-tag">Portfolio</span>
       <h2 class="section-title">Featured Projects</h2>
     </div>
     <div class="projects-grid">
-      <div class="glass-card" data-aos="fade-up" data-aos-delay="100">
+      <div class="glass-card tilt-card" data-aos="fade-up" data-aos-delay="100">
         <div class="project-header">
-          <h3 class="project-title">Hidden Camera Detection System</h3>
-          <span class="project-timeline">Jan 2026 - Apr 2026</span>
+          <h3 class="project-title">Hidden Camera Detector</h3>
+          <span class="project-tag">Jan - Apr 2026</span>
         </div>
-        <p class="tag" style="display:inline-block; margin-bottom:1rem;">Arduino & Proteus</p>
+        <p class="skill-badge" style="margin-bottom: 1rem;"><i class="fa-solid fa-microchip"></i> Arduino & Proteus</p>
         <ul class="project-desc">
-          <li>Designed a sensor-based prototype for detecting hidden/suspicious cameras using Arduino UNO.</li>
-          <li>Integrated an LDR, potentiometer, servo motor, LED, and buzzer for real-time indication and alerts.</li>
-          <li>Employed a 16x2 LCD for live status display and validated functionality with Proteus circuit simulations.</li>
+          <li>Constructed a detection prototype using an Arduino UNO, LDR, and potentiometer modules.</li>
+          <li>Programmed multi-sensory alerting with a servo motor, bright alert LEDs, and audio buzzers.</li>
+          <li>Configured 16x2 LCD display telemetry and validated the complete circuit in Proteus.</li>
         </ul>
       </div>
 
-      <div class="glass-card" data-aos="fade-up" data-aos-delay="200">
+      <div class="glass-card tilt-card" data-aos="fade-up" data-aos-delay="200">
         <div class="project-header">
-          <h3 class="project-title">Attendance Management System</h3>
-          <span class="project-timeline">Jan 2026 - Apr 2026</span>
+          <h3 class="project-title">Attendance System</h3>
+          <span class="project-tag">Jan - Apr 2026</span>
         </div>
-        <p class="tag" style="display:inline-block; margin-bottom:1rem;">Software Engineering</p>
+        <p class="skill-badge" style="margin-bottom: 1rem;"><i class="fa-solid fa-diagram-project"></i> Software Engineering</p>
         <ul class="project-desc">
-          <li>Authored full Software Requirement Specifications (SRS) for robust student attendance tracking.</li>
-          <li>Mapped comprehensive DFDs and UML diagrams to model user interaction, workflows, and processes.</li>
-          <li>Constructed functional test cases covering core application workflows and data validation.</li>
+          <li>Designed full Software Requirement Specifications (SRS) for recording and managing attendance.</li>
+          <li>Engineered Data Flow Diagrams (DFDs) and comprehensive UML models for system processes.</li>
+          <li>Formulated exhaustive test cases validating core application workflows and data structures.</li>
         </ul>
       </div>
 
-      <div class="glass-card" data-aos="fade-up" data-aos-delay="300">
+      <div class="glass-card tilt-card" data-aos="fade-up" data-aos-delay="300">
         <div class="project-header">
-          <h3 class="project-title">Waste-to-Energy (WTE) Project</h3>
-          <span class="project-timeline">Jan 2026 - Apr 2026</span>
+          <h3 class="project-title">Waste-to-Energy Project</h3>
+          <span class="project-tag">Jan - Apr 2026</span>
         </div>
-        <p class="tag" style="display:inline-block; margin-bottom:1rem;">Research & Sustainability</p>
+        <p class="skill-badge" style="margin-bottom: 1rem;"><i class="fa-solid fa-leaf"></i> Sustainability</p>
         <ul class="project-desc">
-          <li>Researched and structured academic frameworks for converting municipal waste into clean energy.</li>
-          <li>Aggregated and evaluated datasets from CPCB, MNRE, and IMD to examine energy yield patterns.</li>
-          <li>Synthesized empirical findings into a structured study on waste lifecycle optimization.</li>
+          <li>Investigated the thermal and biochemical conversion of municipal solid waste to electricity.</li>
+          <li>Aggregated and evaluated environmental data collected from CPCB, MNRE, and IMD portals.</li>
+          <li>Synthesized scientific metrics into an end-to-end framework on clean energy generation.</li>
         </ul>
       </div>
     </div>
@@ -582,99 +616,169 @@
     <div class="split-grid">
       <div>
         <div class="section-header" data-aos="fade-up">
-          <span class="section-tag">Academic Background</span>
+          <span class="section-tag">Academics</span>
           <h2 class="section-title">Education</h2>
         </div>
         <div class="glass-card" data-aos="fade-up" data-aos-delay="100">
           <div class="timeline-item">
             <h4 class="timeline-title">Lovely Professional University</h4>
             <p class="timeline-sub">B.Tech in Computer Science and Engineering</p>
-            <p class="timeline-meta">Aug 2023 - Present | CGPA: 7.89</p>
+            <p class="timeline-meta"><i class="fa-regular fa-calendar"></i> Aug 2023 - Present | CGPA: 7.89</p>
           </div>
           <div class="timeline-item">
             <h4 class="timeline-title">Shivalik Sr Sec School, Panjahra</h4>
             <p class="timeline-sub">Higher Secondary Education</p>
-            <p class="timeline-meta">2022 - 2024 | Percentage: 83%</p>
+            <p class="timeline-meta"><i class="fa-regular fa-calendar"></i> 2022 - 2024 | Score: 83%</p>
           </div>
-          <div class="timeline-item" style="margin-bottom: 0;">
+          <div class="timeline-item">
             <h4 class="timeline-title">Comet Mensa Public School Rehan</h4>
             <p class="timeline-sub">Secondary Education</p>
-            <p class="timeline-meta">2021 - 2022 | Percentage: 62.6%</p>
+            <p class="timeline-meta"><i class="fa-regular fa-calendar"></i> 2021 - 2022 | Score: 62.6%</p>
           </div>
         </div>
       </div>
 
       <div>
         <div class="section-header" data-aos="fade-up">
-          <span class="section-tag">Learning</span>
+          <span class="section-tag">Credentials</span>
           <h2 class="section-title">Certifications</h2>
         </div>
         <div class="glass-card" data-aos="fade-up" data-aos-delay="200">
           <div class="timeline-item">
             <h4 class="timeline-title">CS205: Building with Artificial Intelligence</h4>
-            <p class="timeline-sub">Saylor Academy</p>
-            <p class="timeline-meta">Issued Jan 2026</p>
+            <p class="timeline-sub"><i class="fa-solid fa-building-columns"></i> Saylor Academy</p>
+            <p class="timeline-meta"><i class="fa-solid fa-award"></i> Issued Jan 2026</p>
           </div>
           <div class="timeline-item">
             <h4 class="timeline-title">Programming Fundamentals using Python - Part 2</h4>
-            <p class="timeline-sub">Wingspan</p>
-            <p class="timeline-meta">Issued 2026</p>
+            <p class="timeline-sub"><i class="fa-solid fa-graduation-cap"></i> Wingspan</p>
+            <p class="timeline-meta"><i class="fa-solid fa-award"></i> Issued 2026</p>
           </div>
-          <div class="timeline-item" style="margin-bottom: 0;">
+          <div class="timeline-item">
             <h4 class="timeline-title">CS105: Introduction to Python</h4>
-            <p class="timeline-sub">Saylor Academy</p>
-            <p class="timeline-meta">Issued Feb 2026</p>
+            <p class="timeline-sub"><i class="fa-solid fa-building-columns"></i> Saylor Academy</p>
+            <p class="timeline-meta"><i class="fa-solid fa-award"></i> Issued Feb 2026</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Achievements Section -->
+  <!-- Achievements -->
   <section id="achievements">
     <div class="section-header" data-aos="fade-up">
-      <span class="section-tag">Milestones</span>
-      <h2 class="section-title">Achievements</h2>
+      <span class="section-tag">Recognition</span>
+      <h2 class="section-title">Honors & Achievements</h2>
     </div>
     <div class="achievements-grid">
-      <div class="glass-card achievement-card" data-aos="fade-up" data-aos-delay="100">
-        <div class="achievement-icon"><i class="fa-solid fa-trophy"></i></div>
+      <div class="glass-card achievement-card tilt-card" data-aos="fade-up" data-aos-delay="100">
+        <i class="fa-solid fa-trophy achievement-icon"></i>
         <div>
-          <h4 style="margin-bottom: 0.3rem;">Hackathon Semi-Finalist</h4>
-          <p style="color: var(--text-muted); font-size: 0.9rem;">Successfully advanced to Round 3, collaborating in high-tempo solution engineering and presentations.</p>
+          <h4 style="font-size: 1.1rem; margin-bottom: 0.3rem;">Hackathon Semi-Finalist</h4>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Advanced through Round 3 in a hackathon by collaborating under tight deadlines to prototype viable technical solutions.</p>
         </div>
       </div>
-      <div class="glass-card achievement-card" data-aos="fade-up" data-aos-delay="200">
-        <div class="achievement-icon"><i class="fa-solid fa-brain"></i></div>
+      <div class="glass-card achievement-card tilt-card" data-aos="fade-up" data-aos-delay="200">
+        <i class="fa-solid fa-brain achievement-icon" style="color: var(--accent-cyan); background: rgba(0, 242, 254, 0.1); border-color: rgba(0, 242, 254, 0.2);"></i>
         <div>
-          <h4 style="margin-bottom: 0.3rem;">AI Camera Detection Pioneer</h4>
-          <p style="color: var(--text-muted); font-size: 0.9rem;">Conceptualized an AI-assisted detection workflow integrating computer vision to maximize surveillance safety.</p>
+          <h4 style="font-size: 1.1rem; margin-bottom: 0.3rem;">AI Optical Surveillance Concept</h4>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Designed computer-vision algorithms to optimize accuracy in hidden optical sensor localization.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer / Contact -->
+  <!-- Footer & Contact -->
   <footer id="contact">
-    <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem;">Let's Build Something Together</h3>
-    <p style="color: var(--text-muted); max-width: 500px;">Feel free to reach out for software, embedded hardware collaborations, or internship opportunities.</p>
+    <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 2rem;">Get in Touch</h3>
+    <p style="color: var(--text-muted); max-width: 500px;">Looking forward to connecting for software development roles, hardware projects, and engineering opportunities.</p>
     <div class="social-links">
-      <a href="mailto:sameerkoundal@gmail.com" class="social-link" title="Email"><i class="fa-regular fa-envelope"></i></a>
-      <a href="tel:+917807885180" class="social-link" title="Phone"><i class="fa-solid fa-phone"></i></a>
-      <a href="https://github.com/sameerkoundal22-star" target="_blank" class="social-link" title="GitHub"><i class="fa-brands fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/sameer-koundal-a0b7b6392/" target="_blank" class="social-link" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+      <a href="mailto:sameerkoundal@gmail.com" class="social-btn" title="Email"><i class="fa-solid fa-envelope"></i></a>
+      <a href="tel:+917807885180" class="social-btn" title="Phone"><i class="fa-solid fa-phone"></i></a>
+      <a href="https://github.com/sameerkoundal22-star" target="_blank" class="social-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/sameer-koundal-a0b7b6392/" target="_blank" class="social-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
     </div>
     <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 1rem;">© 2026 Sameer Koundal. All rights reserved.</p>
   </footer>
 
-  <!-- AOS Animation Script -->
+  <!-- Scripts: AOS + Interactive 3D Card Tilt + Particle Physics -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init({
-      duration: 800,
-      easing: 'ease-out-cubic',
-      once: true,
-      offset: 60
+    // Initialize AOS
+    AOS.init({ duration: 800, once: true });
+
+    // Interactive Particle Network Background
+    const canvas = document.getElementById('particles-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 0.6;
+        this.vy = (Math.random() - 0.5) * 0.6;
+        this.radius = Math.random() * 1.5 + 0.5;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(0, 242, 254, 0.4)';
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < 45; i++) {
+      particles.push(new Particle());
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120) {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(0, 242, 254, ${0.15 * (1 - dist / 120)})`;
+            ctx.lineWidth = 0.5;
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    // 3D Card Hover Perspective Tilt Effect
+    document.querySelectorAll('.tilt-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        card.style.transform = `perspective(1000px) rotateX(${-y / 25}deg) rotateY(${x / 25}deg) translateY(-4px)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+      });
     });
   </script>
 </body>
