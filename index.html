@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sameer Koundal | Embedded Engineer & Software Developer</title>
+  <title>Sameer Koundal | Computer Science & Embedded Systems Portfolio</title>
 
-  <!-- Google Fonts & Font Awesome CDN -->
+  <!-- Google Fonts & FontAwesome -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <style>
     :root {
       --bg: #05070e;
-      --card-bg: rgba(13, 19, 36, 0.6);
+      --card-bg: rgba(13, 19, 36, 0.65);
       --card-border: rgba(255, 255, 255, 0.08);
-      --card-hover-border: rgba(0, 242, 254, 0.4);
+      --card-hover-border: rgba(0, 242, 254, 0.45);
       --accent-cyan: #00f2fe;
       --accent-blue: #4facfe;
       --accent-purple: #9d4edd;
@@ -42,7 +42,7 @@
       position: relative;
     }
 
-    /* Custom Geometric Mesh & Particle Canvas */
+    /* Interactive Particle Canvas */
     #particles-canvas {
       position: fixed;
       top: 0;
@@ -99,7 +99,6 @@
       z-index: 1000;
     }
 
-    /* Cyber Vector Brand Logo */
     .brand-logo {
       display: flex;
       align-items: center;
@@ -119,7 +118,6 @@
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 0 20px rgba(0, 242, 254, 0.25);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .logo-symbol::before {
@@ -163,7 +161,7 @@
 
     .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 1.8rem;
       list-style: none;
     }
 
@@ -192,7 +190,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
-      padding: 0.4rem 1rem;
+      padding: 0.4rem 1.1rem;
       background: rgba(0, 242, 254, 0.08);
       border: 1px solid rgba(0, 242, 254, 0.25);
       border-radius: 50px;
@@ -218,23 +216,50 @@
       100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 242, 254, 0); }
     }
 
-    .hero-title {
+    .hero-greeting {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2.5rem, 6.5vw, 4.8rem);
-      font-weight: 700;
-      line-height: 1.1;
-      margin-bottom: 1.2rem;
-      letter-spacing: -1.5px;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--accent-cyan);
+      margin-bottom: 0.4rem;
     }
 
-    .gradient-text {
-      background: linear-gradient(135deg, #ffffff 25%, var(--accent-cyan) 65%, #c084fc);
+    .hero-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      letter-spacing: -2px;
+    }
+
+    .gradient-name {
+      background: linear-gradient(135deg, #ffffff 20%, var(--accent-cyan) 60%, #c084fc);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
+    .hero-role-line {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      font-weight: 600;
+      color: #e2e8f0;
+      margin-bottom: 1.5rem;
+      min-height: 2.2rem;
+    }
+
+    .typing-cursor {
+      color: var(--accent-cyan);
+      animation: blink 0.8s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
     .hero-subtitle {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       color: var(--text-muted);
       max-width: 680px;
       margin-bottom: 2.2rem;
@@ -324,7 +349,7 @@
       box-shadow: 0 10px 35px rgba(0, 242, 254, 0.12);
     }
 
-    /* Skills Grid & Real Logos */
+    /* Skills Grid */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -413,52 +438,102 @@
       color: var(--accent-cyan);
     }
 
-    /* Verified Certificate Cards Grid */
+    /* Visual Certificate Cards with Graphical Certificate Displays */
     .cert-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-      gap: 1.8rem;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2rem;
     }
 
-    .cert-card {
+    .cert-visual-container {
+      width: 100%;
+      height: 190px;
+      background: #090e1f;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      padding: 1.2rem;
+      margin-bottom: 1.4rem;
+      box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.6);
+      cursor: pointer;
     }
 
-    .cert-badge-row {
+    .cert-visual-container::after {
+      content: '🔍 Click to view credentials';
+      position: absolute;
+      inset: 0;
+      background: rgba(5, 7, 14, 0.85);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent-cyan);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .cert-visual-container:hover::after {
+      opacity: 1;
+    }
+
+    .cert-banner-tag {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .cert-visual-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .cert-visual-recipient {
+      font-size: 0.9rem;
+      color: var(--accent-cyan);
+      font-weight: 600;
+    }
+
+    .cert-signature-area {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.2rem;
+      align-items: flex-end;
+      border-top: 1px dashed rgba(255, 255, 255, 0.15);
+      padding-top: 0.5rem;
     }
 
-    .cert-org-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-weight: 700;
-      color: #38bdf8;
-      font-size: 1.05rem;
+    .cert-sig-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      color: var(--text-muted);
     }
 
-    .cert-seal {
+    .cert-seal-symbol {
       width: 32px;
       height: 32px;
-      background: rgba(0, 242, 254, 0.1);
-      border: 1px solid rgba(0, 242, 254, 0.3);
       border-radius: 50%;
+      background: rgba(0, 242, 254, 0.1);
+      border: 1px solid var(--accent-cyan);
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--accent-cyan);
-      font-size: 0.85rem;
+      font-size: 0.8rem;
     }
 
     .cert-title {
       font-size: 1.2rem;
       font-weight: 700;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
       line-height: 1.3;
     }
 
@@ -505,6 +580,44 @@
     .cert-verify-link:hover {
       text-decoration: underline;
       gap: 0.5rem;
+    }
+
+    /* Modal / Lightbox for Certificates */
+    .cert-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 6, 12, 0.9);
+      backdrop-filter: blur(12px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .cert-modal-content {
+      background: #090e1f;
+      border: 1px solid var(--card-hover-border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 0 50px rgba(0, 242, 254, 0.2);
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.5rem;
+      font-size: 1.4rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .modal-close:hover {
+      color: #fff;
     }
 
     /* Education Split */
@@ -623,10 +736,10 @@
 </head>
 <body>
 
-  <!-- Dynamic Particle Canvas -->
+  <!-- Dynamic Particle Background -->
   <canvas id="particles-canvas"></canvas>
 
-  <!-- Animated Ambient Lights -->
+  <!-- Ambient Lights -->
   <div class="ambient-glow glow-top"></div>
   <div class="ambient-glow glow-bottom"></div>
 
@@ -642,7 +755,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
-      <li><a href="#certificates">Certifications</a></li>
+      <li><a href="#certificates">Certificates</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#achievements">Achievements</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -652,20 +765,29 @@
   <!-- Hero Section -->
   <header class="hero" id="about">
     <div class="status-badge" data-aos="fade-up">
-      <div class="status-dot"></div> Available for Engineering Roles & Internships
+      <div class="status-dot"></div> Open to Software & Embedded Roles
     </div>
+    
+    <div class="hero-greeting" data-aos="fade-up" data-aos-delay="50">Hello, I'm</div>
+    
     <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">
-      Engineering intelligent <br><span class="gradient-text">Hardware & Software</span> Systems.
+      <span class="gradient-name">Sameer Koundal</span>
     </h1>
+
+    <div class="hero-role-line" data-aos="fade-up" data-aos-delay="150">
+      <span id="typed-text"></span><span class="typing-cursor">|</span>
+    </div>
+
     <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
-      Computer Science & Engineering student at Lovely Professional University. Bridging the physical and digital world through embedded firmware, automated circuit design, and scalable application logic.
+      Computer Science & Engineering student at Lovely Professional University[cite: 1]. Specializing in bridging hardware systems with clean software architectures, Proteus simulation workflows, and IoT innovation[cite: 1].
     </p>
-    <div class="btn-group" data-aos="fade-up" data-aos-delay="300">
+
+    <div class="btn-group" data-aos="fade-up" data-aos-delay="250">
       <a href="mailto:sameerkoundal@gmail.com" class="btn btn-primary">
         <i class="fa-solid fa-envelope"></i> Contact Me
       </a>
       <a href="https://github.com/sameerkoundal22-star" target="_blank" class="btn btn-glass">
-        <i class="fa-brands fa-github"></i> GitHub
+        <i class="fa-brands fa-github"></i> GitHub Profile
       </a>
       <a href="https://www.linkedin.com/in/sameer-koundal-a0b7b6392/" target="_blank" class="btn btn-glass">
         <i class="fa-brands fa-linkedin"></i> LinkedIn
@@ -673,7 +795,7 @@
     </div>
   </header>
 
-  <!-- Skills Section with Brand Logos -->
+  <!-- Skills Section with Real Logos -->
   <section id="skills">
     <div class="section-header" data-aos="fade-up">
       <span class="section-tag">Technical Arsenal</span>
@@ -682,21 +804,21 @@
     <div class="skills-grid">
       <div class="glass-card tilt-card" data-aos="fade-up" data-aos-delay="100">
         <i class="fa-solid fa-code skill-card-icon" style="color: var(--accent-cyan);"></i>
-        <h3>Programming Languages</h3>
+        <h3>Languages</h3>
         <div class="skill-badges">
-          <span class="skill-badge"><i class="fa-brands fa-python" style="color:#38bdf8;"></i> Python</span>
-          <span class="skill-badge"><i class="fa-solid fa-terminal" style="color:#60a5fa;"></i> C</span>
-          <span class="skill-badge"><i class="fa-solid fa-code" style="color:#818cf8;"></i> C++</span>
+          <span class="skill-badge"><i class="fa-brands fa-python" style="color:#38bdf8;"></i> Python[cite: 1]</span>
+          <span class="skill-badge"><i class="fa-solid fa-terminal" style="color:#60a5fa;"></i> C[cite: 1]</span>
+          <span class="skill-badge"><i class="fa-solid fa-code" style="color:#818cf8;"></i> C++[cite: 1]</span>
         </div>
       </div>
 
       <div class="glass-card tilt-card" data-aos="fade-up" data-aos-delay="200">
         <i class="fa-solid fa-layer-group skill-card-icon" style="color: #60a5fa;"></i>
-        <h3>Web & Architecture</h3>
+        <h3>Web & Modeling</h3>
         <div class="skill-badges">
-          <span class="skill-badge"><i class="fa-brands fa-html5" style="color:#f97316;"></i> HTML5</span>
-          <span class="skill-badge"><i class="fa-brands fa-css3-alt" style="color:#38bdf8;"></i> CSS3</span>
-          <span class="skill-badge"><i class="fa-solid fa-diagram-project" style="color:#34d399;"></i> SRS / DFD / UML</span>
+          <span class="skill-badge"><i class="fa-brands fa-html5" style="color:#f97316;"></i> HTML5[cite: 1]</span>
+          <span class="skill-badge"><i class="fa-brands fa-css3-alt" style="color:#38bdf8;"></i> CSS3[cite: 1]</span>
+          <span class="skill-badge"><i class="fa-solid fa-diagram-project" style="color:#34d399;"></i> SRS / DFD / UML[cite: 1]</span>
         </div>
       </div>
 
@@ -704,19 +826,19 @@
         <i class="fa-solid fa-microchip skill-card-icon" style="color: #a855f7;"></i>
         <h3>Hardware & Simulation</h3>
         <div class="skill-badges">
-          <span class="skill-badge"><i class="fa-solid fa-bolt" style="color:#06b6d4;"></i> Arduino UNO</span>
-          <span class="skill-badge"><i class="fa-solid fa-microchip" style="color:#ec4899;"></i> Proteus Simulation</span>
-          <span class="skill-badge"><i class="fa-solid fa-satellite-dish" style="color:#fbbf24;"></i> Sensors & LCDs</span>
+          <span class="skill-badge"><i class="fa-solid fa-bolt" style="color:#06b6d4;"></i> Arduino UNO[cite: 1]</span>
+          <span class="skill-badge"><i class="fa-solid fa-microchip" style="color:#ec4899;"></i> Proteus Simulation[cite: 1]</span>
+          <span class="skill-badge"><i class="fa-solid fa-satellite-dish" style="color:#fbbf24;"></i> Sensors & LCDs[cite: 1]</span>
         </div>
       </div>
 
       <div class="glass-card tilt-card" data-aos="fade-up" data-aos-delay="400">
         <i class="fa-solid fa-screwdriver-wrench skill-card-icon" style="color: #10b981;"></i>
-        <h3>Tools & Version Control</h3>
+        <h3>Tools & Platforms</h3>
         <div class="skill-badges">
-          <span class="skill-badge"><i class="fa-brands fa-git-alt" style="color:#f43f5e;"></i> Git</span>
-          <span class="skill-badge"><i class="fa-brands fa-github"></i> GitHub</span>
-          <span class="skill-badge"><i class="fa-solid fa-file-code" style="color:#3b82f6;"></i> VS Code</span>
+          <span class="skill-badge"><i class="fa-brands fa-git-alt" style="color:#f43f5e;"></i> Git[cite: 1]</span>
+          <span class="skill-badge"><i class="fa-brands fa-github"></i> GitHub[cite: 1]</span>
+          <span class="skill-badge"><i class="fa-solid fa-file-code" style="color:#3b82f6;"></i> VS Code[cite: 1]</span>
         </div>
       </div>
     </div>
@@ -726,140 +848,171 @@
   <section id="projects">
     <div class="section-header" data-aos="fade-up">
       <span class="section-tag">Case Studies</span>
-      <h2 class="section-title">Featured Engineering Projects</h2>
+      <h2 class="section-title">Featured Projects</h2>
     </div>
     <div class="projects-grid">
       <div class="glass-card tilt-card" data-aos="fade-up" data-aos-delay="100">
         <div class="project-header">
           <h3 class="project-title">Hidden Camera Detection System</h3>
-          <span class="project-tag">Jan - Apr 2026</span>
+          <span class="project-tag">Jan - Apr 2026[cite: 1]</span>
         </div>
-        <p class="skill-badge" style="margin-bottom: 1.2rem;"><i class="fa-solid fa-microchip"></i> Arduino & Proteus</p>
+        <p class="skill-badge" style="margin-bottom: 1.2rem;"><i class="fa-solid fa-microchip"></i> Arduino & Proteus[cite: 1]</p>
         <ul class="project-desc">
-          <li>Constructed a surveillance detection prototype using Arduino UNO, LDR optical sensors, and precision potentiometers.</li>
-          <li>Integrated multi-signal responsive alerts featuring servo motors, LED alarms, and warning buzzers.</li>
-          <li>Programmed 16x2 LCD interface for real-time status diagnostics and verified logic via Proteus simulations.</li>
+          <li>Designed a sensor-based prototype for detecting hidden/suspicious cameras using an Arduino UNO[cite: 1].</li>
+          <li>Integrated LDR and potentiometer components with responsive servo motor, LED, and buzzer alerts[cite: 1].</li>
+          <li>Employed a 16x2 LCD status interface and simulated entire workflows in Proteus[cite: 1].</li>
         </ul>
       </div>
 
       <div class="glass-card tilt-card" data-aos="fade-up" data-aos-delay="200">
         <div class="project-header">
           <h3 class="project-title">Attendance Management System</h3>
-          <span class="project-tag">Jan - Apr 2026</span>
+          <span class="project-tag">Jan - Apr 2026[cite: 1]</span>
         </div>
-        <p class="skill-badge" style="margin-bottom: 1.2rem;"><i class="fa-solid fa-diagram-project"></i> Software Engineering</p>
+        <p class="skill-badge" style="margin-bottom: 1.2rem;"><i class="fa-solid fa-diagram-project"></i> Software Engineering[cite: 1]</p>
         <ul class="project-desc">
-          <li>Authored full Software Requirement Specifications (SRS) ensuring structured student attendance lifecycles.</li>
-          <li>Modeled user interactions, data paths, and structural relationships through DFDs and UML diagrams.</li>
-          <li>Formulated end-to-end test cases validating core application stability, workflows, and edge-cases.</li>
+          <li>Defined system requirements through an SRS covering core student attendance operations[cite: 1].</li>
+          <li>Prepared comprehensive DFDs and UML diagrams to model workflows and processes[cite: 1].</li>
+          <li>Constructed functional test cases covering major application and data validations[cite: 1].</li>
         </ul>
       </div>
 
       <div class="glass-card tilt-card" data-aos="fade-up" data-aos-delay="300">
         <div class="project-header">
           <h3 class="project-title">Waste-to-Energy (WTE) Project</h3>
-          <span class="project-tag">Jan - Apr 2026</span>
+          <span class="project-tag">Jan - Apr 2026[cite: 1]</span>
         </div>
-        <p class="skill-badge" style="margin-bottom: 1.2rem;"><i class="fa-solid fa-leaf"></i> Sustainability</p>
+        <p class="skill-badge" style="margin-bottom: 1.2rem;"><i class="fa-solid fa-leaf"></i> Academic Research[cite: 1]</p>
         <ul class="project-desc">
-          <li>Researched thermochemical and biological conversion of municipal waste into electrical power.</li>
-          <li>Gathered and computed environmental datasets from official CPCB, MNRE, and IMD portals.</li>
-          <li>Compiled a comprehensive analytical thesis on optimizing sustainable power generation.</li>
+          <li>Researched and evaluated municipal waste-to-energy conversion systems[cite: 1].</li>
+          <li>Aggregated datasets from CPCB, MNRE, and IMD portals to analyze clean energy generation[cite: 1].</li>
+          <li>Compiled a structured thesis on waste management and energy transformation[cite: 1].</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- Verified Certifications Section -->
+  <!-- Verified Certifications Section with Certificate Previews -->
   <section id="certificates">
     <div class="section-header" data-aos="fade-up">
-      <span class="section-tag">Credentials</span>
-      <h2 class="section-title">Verified Certifications</h2>
+      <span class="section-tag">Verified Credentials</span>
+      <h2 class="section-title">Certificates & Licenses</h2>
     </div>
     <div class="cert-grid">
-      <!-- Saylor AI -->
-      <div class="glass-card cert-card tilt-card" data-aos="fade-up" data-aos-delay="100">
-        <div>
-          <div class="cert-badge-row">
-            <div class="cert-org-logo"><i class="fa-solid fa-book-open-reader"></i> Saylor Academy</div>
-            <div class="cert-seal"><i class="fa-solid fa-certificate"></i></div>
+      
+      <!-- Saylor AI Certificate -->
+      <div class="glass-card tilt-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="cert-visual-container" onclick="openCert('Saylor CS205: Building with AI', 'Sameer Koundal', 'Saylor Academy', '6729791866SK', 'Grade: 86.27% | 48 Hours | 4.8 CEUs', 'Jan 27, 2026', 'Signed by Michael J. Saylor')">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span class="cert-banner-tag" style="color: #38bdf8;"><i class="fa-solid fa-graduation-cap"></i> Saylor Academy[cite: 3]</span>
+            <div class="cert-seal-symbol"><i class="fa-solid fa-certificate"></i></div>
           </div>
-          <h3 class="cert-title">CS205: Building with Artificial Intelligence</h3>
-          <p style="color: var(--text-muted); font-size: 0.85rem;">Signed by Michael J. Saylor</p>
-          <div class="cert-stats">
-            <span class="cert-stat-chip"><i class="fa-solid fa-clock"></i> 48 Hours</span>
-            <span class="cert-stat-chip"><i class="fa-solid fa-star"></i> Grade: 86.27%</span>
-            <span class="cert-stat-chip"><i class="fa-solid fa-graduation-cap"></i> 4.8 CEUs</span>
+          <div>
+            <div class="cert-visual-title">CS205: Building with Artificial Intelligence[cite: 3]</div>
+            <div class="cert-visual-recipient">Sameer Koundal[cite: 3]</div>
+          </div>
+          <div class="cert-signature-area">
+            <span class="cert-sig-name">Michael J Saylor[cite: 3]</span>
+            <span style="font-size:0.75rem; color:var(--accent-emerald); font-weight:600;">Grade: 86.27%[cite: 3]</span>
           </div>
         </div>
+
+        <h3 class="cert-title">CS205: Building with AI[cite: 3]</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">Saylor Academy[cite: 3]</p>
+        <div class="cert-stats">
+          <span class="cert-stat-chip"><i class="fa-solid fa-clock"></i> 48 Hours[cite: 3]</span>
+          <span class="cert-stat-chip"><i class="fa-solid fa-star"></i> Grade: 86.27%[cite: 3]</span>
+          <span class="cert-stat-chip"><i class="fa-solid fa-award"></i> 4.8 CEUs[cite: 3]</span>
+        </div>
         <div class="cert-footer">
-          <span class="cert-id">ID: 6729791866SK</span>
-          <span class="cert-id">Jan 27, 2026</span>
+          <span class="cert-id">ID: 6729791866SK[cite: 3]</span>
+          <span class="cert-id">Jan 27, 2026[cite: 3]</span>
         </div>
       </div>
 
-      <!-- Saylor Python -->
-      <div class="glass-card cert-card tilt-card" data-aos="fade-up" data-aos-delay="200">
-        <div>
-          <div class="cert-badge-row">
-            <div class="cert-org-logo"><i class="fa-solid fa-book-open-reader"></i> Saylor Academy</div>
-            <div class="cert-seal"><i class="fa-solid fa-certificate"></i></div>
+      <!-- Saylor Python Certificate -->
+      <div class="glass-card tilt-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="cert-visual-container" onclick="openCert('Saylor CS105: Introduction to Python', 'Sameer Koundal', 'Saylor Academy', '9999782598SK', 'Grade: 90.52% | 36 Hours | 3.6 CEUs', 'Feb 6, 2026', 'Signed by Michael J. Saylor')">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span class="cert-banner-tag" style="color: #38bdf8;"><i class="fa-solid fa-graduation-cap"></i> Saylor Academy[cite: 4]</span>
+            <div class="cert-seal-symbol"><i class="fa-solid fa-certificate"></i></div>
           </div>
-          <h3 class="cert-title">CS105: Introduction to Python</h3>
-          <p style="color: var(--text-muted); font-size: 0.85rem;">Signed by Michael J. Saylor</p>
-          <div class="cert-stats">
-            <span class="cert-stat-chip"><i class="fa-solid fa-clock"></i> 36 Hours</span>
-            <span class="cert-stat-chip"><i class="fa-solid fa-star"></i> Grade: 90.52%</span>
-            <span class="cert-stat-chip"><i class="fa-solid fa-graduation-cap"></i> 3.6 CEUs</span>
+          <div>
+            <div class="cert-visual-title">CS105: Introduction to Python[cite: 4]</div>
+            <div class="cert-visual-recipient">Sameer Koundal[cite: 4]</div>
+          </div>
+          <div class="cert-signature-area">
+            <span class="cert-sig-name">Michael J Saylor[cite: 4]</span>
+            <span style="font-size:0.75rem; color:var(--accent-emerald); font-weight:600;">Grade: 90.52%[cite: 4]</span>
           </div>
         </div>
+
+        <h3 class="cert-title">CS105: Introduction to Python[cite: 4]</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">Saylor Academy[cite: 4]</p>
+        <div class="cert-stats">
+          <span class="cert-stat-chip"><i class="fa-solid fa-clock"></i> 36 Hours[cite: 4]</span>
+          <span class="cert-stat-chip"><i class="fa-solid fa-star"></i> Grade: 90.52%[cite: 4]</span>
+          <span class="cert-stat-chip"><i class="fa-solid fa-award"></i> 3.6 CEUs[cite: 4]</span>
+        </div>
         <div class="cert-footer">
-          <span class="cert-id">ID: 9999782598SK</span>
-          <span class="cert-id">Feb 6, 2026</span>
+          <span class="cert-id">ID: 9999782598SK[cite: 4]</span>
+          <span class="cert-id">Feb 6, 2026[cite: 4]</span>
         </div>
       </div>
 
-      <!-- Code Caravan 3.0 -->
-      <div class="glass-card cert-card tilt-card" data-aos="fade-up" data-aos-delay="300">
-        <div>
-          <div class="cert-badge-row">
-            <div class="cert-org-logo" style="color: #f97316;"><i class="fa-solid fa-code"></i> Coding Blocks × LPU</div>
-            <div class="cert-seal" style="color:#f97316; border-color:rgba(249,115,22,0.4);"><i class="fa-solid fa-award"></i></div>
+      <!-- Code Caravan Certificate -->
+      <div class="glass-card tilt-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="cert-visual-container" onclick="openCert('Code Caravan 3.0 Mentor Session', 'Sameer Koundal', 'Coding Blocks & LPU', 'd6ead581-8ad8-4d72-8ce4', 'Hackathon Preparation & Problem-Solving', '2026', 'Founding Member: Karthik Mathur | CEO: Bhupender Chahan')">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span class="cert-banner-tag" style="color: #f97316;"><i class="fa-solid fa-code"></i> Coding Blocks × LPU[cite: 2]</span>
+            <div class="cert-seal-symbol" style="color:#f97316; border-color:#f97316;"><i class="fa-solid fa-award"></i></div>
           </div>
-          <h3 class="cert-title">Code Caravan 3.0 - Mentor Session</h3>
-          <p style="color: var(--text-muted); font-size: 0.85rem;">Department of Student Organization, LPU</p>
-          <div class="cert-stats">
-            <span class="cert-stat-chip"><i class="fa-solid fa-users"></i> Teamwork & Hackathons</span>
-            <span class="cert-stat-chip"><i class="fa-solid fa-lightbulb"></i> Problem Solving</span>
+          <div>
+            <div class="cert-visual-title">Code Caravan 3.0[cite: 2]</div>
+            <div class="cert-visual-recipient">Sameer Koundal[cite: 2]</div>
+          </div>
+          <div class="cert-signature-area">
+            <span class="cert-sig-name">Karthik Mathur & Bhupender Chahan[cite: 2]</span>
+            <span style="font-size:0.75rem; color:#f97316; font-weight:600;">Verified[cite: 2]</span>
           </div>
         </div>
+
+        <h3 class="cert-title">Code Caravan 3.0 - Mentor Session[cite: 2]</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">Coding Blocks × Student Organization LPU[cite: 2]</p>
+        <div class="cert-stats">
+          <span class="cert-stat-chip"><i class="fa-solid fa-users"></i> Hackathon Prep[cite: 2]</span>
+          <span class="cert-stat-chip"><i class="fa-solid fa-lightbulb"></i> Problem Solving[cite: 2]</span>
+        </div>
         <div class="cert-footer">
-          <span class="cert-id">GiveMyCertificate</span>
-          <a href="https://verification.givemycertificate.com/v/d6ead581-8ad8-4d72-8ce4-165fdcc12f95" target="_blank" class="cert-verify-link">Verify <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          <span class="cert-id">GiveMyCertificate[cite: 2]</span>
+          <a href="https://verification.givemycertificate.com/v/d6ead581-8ad8-4d72-8ce4-165fdcc12f95" target="_blank" class="cert-verify-link">Verify <i class="fa-solid fa-arrow-up-right-from-square"></i>[cite: 2]</a>
         </div>
       </div>
 
-      <!-- Wingspan Python -->
-      <div class="glass-card cert-card tilt-card" data-aos="fade-up" data-aos-delay="400">
-        <div>
-          <div class="cert-badge-row">
-            <div class="cert-org-logo" style="color: #10b981;"><i class="fa-solid fa-laptop-code"></i> Wingspan</div>
-            <div class="cert-seal" style="color:#10b981; border-color:rgba(16,185,129,0.4);"><i class="fa-solid fa-shield-halved"></i></div>
-          </div>
-          <h3 class="cert-title">Programming Fundamentals using Python - Part 2</h3>
-          <p style="color: var(--text-muted); font-size: 0.85rem;">Comprehensive Advanced Python Programming</p>
-          <div class="cert-stats">
-            <span class="cert-stat-chip"><i class="fa-brands fa-python"></i> Data Structures</span>
-            <span class="cert-stat-chip"><i class="fa-solid fa-check-double"></i> Algorithmic Logic</span>
-          </div>
-        </div>
-        <div class="cert-footer">
-          <span class="cert-id">Wingspan Certified</span>
-          <span class="cert-id">Issued 2026</span>
-        </div>
-      </div>
     </div>
   </section>
+
+  <!-- Modal for Full Certificate Information -->
+  <div class="cert-modal" id="certModal" onclick="closeCert()">
+    <div class="cert-modal-content" onclick="event.stopPropagation()">
+      <span class="modal-close" onclick="closeCert()">&times;</span>
+      <div style="font-size:0.8rem; color:var(--accent-cyan); text-transform:uppercase; font-weight:700; margin-bottom:0.4rem;">Certificate Verification Record</div>
+      <h2 id="modalTitle" style="font-family:'Space Grotesk',sans-serif; font-size:1.5rem; margin-bottom:1rem; color:#fff;"></h2>
+      
+      <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:1.2rem; border-radius:12px; margin-bottom:1.5rem;">
+        <p style="margin-bottom:0.5rem;"><strong>Recipient:</strong> <span id="modalName" style="color:var(--accent-cyan);"></span></p>
+        <p style="margin-bottom:0.5rem;"><strong>Issued By:</strong> <span id="modalIssuer"></span></p>
+        <p style="margin-bottom:0.5rem;"><strong>Certificate ID:</strong> <span id="modalId" style="font-family:'JetBrains Mono',monospace; color:var(--accent-emerald);"></span></p>
+        <p style="margin-bottom:0.5rem;"><strong>Course Metrics:</strong> <span id="modalMetrics"></span></p>
+        <p style="margin-bottom:0.5rem;"><strong>Date:</strong> <span id="modalDate"></span></p>
+        <p><strong>Signatures:</strong> <span id="modalSigner" style="color:var(--text-muted);"></span></p>
+      </div>
+
+      <div style="display:flex; justify-content:flex-end;">
+        <button class="btn btn-primary" onclick="closeCert()" style="padding:0.6rem 1.4rem;">Close Details</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Education & Achievements Split -->
   <section id="education">
@@ -871,19 +1024,19 @@
         </div>
         <div class="glass-card" data-aos="fade-up" data-aos-delay="100">
           <div class="timeline-item">
-            <h4 class="timeline-title">Lovely Professional University</h4>
-            <p class="timeline-sub">B.Tech in Computer Science and Engineering</p>
-            <p class="timeline-meta"><i class="fa-regular fa-calendar"></i> Aug 2023 - Present | CGPA: 7.89</p>
+            <h4 class="timeline-title">Lovely Professional University[cite: 1]</h4>
+            <p class="timeline-sub">B.Tech in Computer Science and Engineering[cite: 1]</p>
+            <p class="timeline-meta"><i class="fa-regular fa-calendar"></i> Aug 2023 - Present | CGPA: 7.89[cite: 1]</p>
           </div>
           <div class="timeline-item">
-            <h4 class="timeline-title">Shivalik Sr Sec School, Panjahra</h4>
-            <p class="timeline-sub">Higher Secondary Education</p>
-            <p class="timeline-meta"><i class="fa-regular fa-calendar"></i> 2022 - 2024 | Percentage: 83%</p>
+            <h4 class="timeline-title">Shivalik Sr Sec School, Panjahra[cite: 1]</h4>
+            <p class="timeline-sub">Higher Secondary Education[cite: 1]</p>
+            <p class="timeline-meta"><i class="fa-regular fa-calendar"></i> 2022 - 2024 | Percentage: 83%[cite: 1]</p>
           </div>
           <div class="timeline-item">
-            <h4 class="timeline-title">Comet Mensa Public School Rehan</h4>
-            <p class="timeline-sub">Secondary Education</p>
-            <p class="timeline-meta"><i class="fa-regular fa-calendar"></i> 2021 - 2022 | Percentage: 62.6%</p>
+            <h4 class="timeline-title">Comet Mensa Public School Rehan[cite: 1]</h4>
+            <p class="timeline-sub">Secondary Education[cite: 1]</p>
+            <p class="timeline-meta"><i class="fa-regular fa-calendar"></i> 2021 - 2022 | Percentage: 62.6%[cite: 1]</p>
           </div>
         </div>
       </div>
@@ -898,14 +1051,14 @@
             <i class="fa-solid fa-trophy achievement-icon"></i>
             <div>
               <h4 style="font-size: 1.1rem; margin-bottom: 0.3rem;">Hackathon Semi-Finalist</h4>
-              <p style="color: var(--text-muted); font-size: 0.9rem;">Advanced through Round 3 in a hackathon, collaborating under tight sprint cycles to pitch functional hardware-software solutions.</p>
+              <p style="color: var(--text-muted); font-size: 0.9rem;">Participated in a Hackathon and advanced to Round 3, collaborating with a team to present innovative solutions[cite: 1].</p>
             </div>
           </div>
           <div class="glass-card achievement-card tilt-card" data-aos="fade-up" data-aos-delay="200">
             <i class="fa-solid fa-brain achievement-icon" style="color: var(--accent-cyan); background: rgba(0, 242, 254, 0.1); border-color: rgba(0, 242, 254, 0.25);"></i>
             <div>
               <h4 style="font-size: 1.1rem; margin-bottom: 0.3rem;">AI Optical Camera Detection</h4>
-              <p style="color: var(--text-muted); font-size: 0.9rem;">Formulated an AI-assisted computer vision workflow for identifying hidden sensor apertures and boosting camera detection efficiency.</p>
+              <p style="color: var(--text-muted); font-size: 0.9rem;">Developed an AI-based system using computer vision concepts to identify potential hidden cameras efficiently[cite: 1].</p>
             </div>
           </div>
         </div>
@@ -919,24 +1072,72 @@
       <div class="logo-symbol">
         <div class="logo-symbol-inner">SK</div>
       </div>
-      <span class="logo-text">Sameer Koundal</span>
+      <span class="logo-text">Sameer Koundal[cite: 1]</span>
     </div>
-    <p style="color: var(--text-muted); max-width: 500px;">Looking forward to connecting for software development roles, embedded hardware collaborations, or internship opportunities.</p>
+    <p style="color: var(--text-muted); max-width: 500px;">Connect for software engineering roles, embedded systems projects, or technical collaboration.</p>
     <div class="social-links">
-      <a href="mailto:sameerkoundal@gmail.com" class="social-btn" title="Email"><i class="fa-solid fa-envelope"></i></a>
-      <a href="tel:+917807885180" class="social-btn" title="Phone"><i class="fa-solid fa-phone"></i></a>
-      <a href="https://github.com/sameerkoundal22-star" target="_blank" class="social-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/sameer-koundal-a0b7b6392/" target="_blank" class="social-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+      <a href="mailto:sameerkoundal@gmail.com" class="social-btn" title="Email"><i class="fa-solid fa-envelope"></i>[cite: 1]</a>
+      <a href="tel:+917807885180" class="social-btn" title="Phone"><i class="fa-solid fa-phone"></i>[cite: 1]</a>
+      <a href="https://github.com/sameerkoundal22-star" target="_blank" class="social-btn" title="GitHub"><i class="fa-brands fa-github"></i>[cite: 1]</a>
+      <a href="https://www.linkedin.com/in/sameer-koundal-a0b7b6392/" target="_blank" class="social-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i>[cite: 1]</a>
     </div>
-    <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 1rem;">© 2026 Sameer Koundal. Crafted with passion & precision.</p>
+    <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 1rem;">© 2026 Sameer Koundal. All rights reserved.</p>
   </footer>
 
-  <!-- Scripts: AOS + 3D Tilt + Interactive Physics Canvas -->
+  <!-- Scripts: AOS + Interactive 3D Tilt + Particle Physics + Typewriter + Modal -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 800, once: true });
 
-    // Interactive Particle Network Background
+    // Typewriter Effect
+    const words = ["Computer Science Student", "Embedded Systems Developer", "Software Engineer", "Arduino & Circuit Specialist"];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typedTextSpan = document.getElementById("typed-text");
+
+    function type() {
+      const currentWord = words[wordIndex];
+      if (isDeleting) {
+        typedTextSpan.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        typedTextSpan.textContent = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+      }
+
+      let typeSpeed = isDeleting ? 40 : 90;
+
+      if (!isDeleting && charIndex === currentWord.length) {
+        typeSpeed = 2000;
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        typeSpeed = 400;
+      }
+
+      setTimeout(type, typeSpeed);
+    }
+    document.addEventListener("DOMContentLoaded", type);
+
+    // Certificate Details Modal Logic
+    function openCert(title, name, issuer, id, metrics, date, signer) {
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalName').textContent = name;
+      document.getElementById('modalIssuer').textContent = issuer;
+      document.getElementById('modalId').textContent = id;
+      document.getElementById('modalMetrics').textContent = metrics;
+      document.getElementById('modalDate').textContent = date;
+      document.getElementById('modalSigner').textContent = signer;
+      document.getElementById('certModal').style.display = 'flex';
+    }
+
+    function closeCert() {
+      document.getElementById('certModal').style.display = 'none';
+    }
+
+    // Particle Physics Network
     const canvas = document.getElementById('particles-canvas');
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -997,7 +1198,7 @@
     }
     animate();
 
-    // 3D Perspective Tilt for Cards
+    // 3D Tilt Effect
     document.querySelectorAll('.tilt-card').forEach(card => {
       card.addEventListener('mousemove', e => {
         const rect = card.getBoundingClientRect();
